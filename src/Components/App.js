@@ -5,19 +5,22 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Favorites from './Favorites';
 import Footer from "./Footer";
+import Display from './Dispay';
 
 function App() {
   return (
     <>
       <Navbar/>
-      <Switch>
+        <div className='APP'>
+        <Switch>
         <Route path="/favorites">
-          <Favorites/>
+          <Display/>
         </Route>
         <Route exact path="/">
           <Home/>
         </Route>
       </Switch>
+        </div>
       <Footer/>
       <div className="App">
   

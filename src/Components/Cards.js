@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
 
-function Cards() {
+function Cards({drinks}){
+    const[image, setImage] = useState("")
+    const[cocktailName, setCocktailName] = useState("")
+
     return (
         <div className="text-center">
             <h3 className="text-2xl  pt-5 text-textcolor font-bold">

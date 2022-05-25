@@ -2,7 +2,7 @@ import React from "react";
 // import Cards from "./Cards";
 import { useState } from "react";
 
-function Search(){
+function Search({updateDrinks}){
     const [name, setName] = useState("");
 
     function handleSubmit(event,ctname){
@@ -10,13 +10,12 @@ function Search(){
         ctname = name
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${ctname}`)
         .then((response) => response.json())
-        .then((result) => {
-          const data = result.drinks;
-          console.log(data);
+        .then((data) => {
+            updateDrinks(data.drinks)
         })
         setName("")
     }
-
+    
     return(
         <div className="text-center font-bold">
             <h3 className="text-2xl  pt-20 text-textcolor">Search for cocktail by name</h3>

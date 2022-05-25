@@ -8,19 +8,21 @@ import { useState } from "react";
 
 
 function Home(){
-    const[drinks, setDrinks]=useState([])
+    const [drinkData, setDrinkData]=useState([])
 
     useEffect(()=>{
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=m`)
         .then((r)=> r.json())
-        .then((data)=>(setDrinks(data)))
+        .then((data)=>(setDrinkData(data.drinks)))
     },[])
+    console.log(drinkData)
+
 
     return(
         <div>
             <About/>
-            <Search/>
-            {drinks.map((drink)=> <Cards key={drink} drinks={drink}/>)}
+            <Search updateDrinks={setDrinkData} />
+            <Cards Drinks={drinkData} />
             <Feedback/>
             
           

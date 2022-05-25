@@ -1,17 +1,27 @@
 // import logo from './logo.svg';
 import './App.css';
+import { Route, Switch } from "react-router-dom";
 import Navbar from './Navbar';
+import Home from './Home';
+import Favorites from './Favorites';
+import Footer from "./Footer";
 
 function App() {
   return (
     <>
       <Navbar/>
+      <Switch>
+        <Route path="/favorites">
+          <Favorites/>
+        </Route>
+        <Route exact path="/">
+          <Home/>
+        </Route>
+      </Switch>
+      <Footer/>
       <div className="App">
   
-      <h1 className="text-3xl font-bold underline">
-      Hello world
-    </h1>
-    </div>
+      </div>
     </>
   );
 }

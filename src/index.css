@@ -26,3 +26,7 @@ code {
 .footer{
   background: rgba(196, 196, 196, 0.3);
 }
+
+.app{
+  min-height: 100vh;
+}

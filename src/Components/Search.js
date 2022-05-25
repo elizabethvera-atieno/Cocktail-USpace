@@ -1,5 +1,5 @@
 import React from "react";
-import Cards from "./Cards";
+// import Cards from "./Cards";
 import { useState } from "react";
 
 function Search(){
@@ -24,7 +24,7 @@ function Search(){
             <input className="focus:bg-blue py-2" type="text" placeholder="Search.." name="search" onChange={(e) => setName(e.target.value)} value={name}/>
             <button className="bg-textcolor text-white hover:bg-sky-700 w-5xl px-4 py-2" type="submit">Enter</button>
             </form>
-            <Cards/>
+            {/* <Cards/> */}
         </div>
     )
 }

@@ -7,13 +7,17 @@ import Favorites from './Favorites';
 import Footer from "./Footer";
 import Display from './Dispay';
 
+
 function App() {
   return (
     <>
       <Navbar/>
-        <div className='APP'>
+        <div className='app'>
         <Switch>
         <Route path="/favorites">
+          <Favorites/>
+        </Route>
+        <Route path={`/display`}>
           <Display/>
         </Route>
         <Route exact path="/">

@@ -3,7 +3,7 @@ import React from "react"
 function About(){
   return(
       <div className="divAbout text-center ">
-        <h3  className="text-2xl  pt-20 text-textcolor font-bold">Welcome to Cocktail U-Space</h3>
+        <h3  className="md:text-2xl pt-20 text-textcolor font-bold">Welcome to Cocktail U-Space</h3>
         <div className="md:grid grid-cols-11 gap-4 pt-5">
             <div className="col-start-3 col-span-2">
                 {/* <img  src={require('../Images/ct1.png')}/>  */}

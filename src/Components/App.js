@@ -6,6 +6,7 @@ import Home from './Home';
 import Favorites from './Favorites';
 import Footer from "./Footer";
 import Display from './Dispay';
+import Aunthentication from './Aunthentication';
 
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route path={`/display`}>
           <Display/>
+        </Route>
+        <Route path="/authentication">
+          <Aunthentication/>
         </Route>
         <Route exact path="/">
           <Home/>

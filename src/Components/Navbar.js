@@ -10,6 +10,9 @@ function Navbar(){
             <h2 className=" text-2xl pl-6 pt-3 text-textcolor">
                 <a href="/favorites">Favorites</a>
             </h2>
+            <h2 className=" text-2xl pl-6 pt-3 text-textcolor">
+                <a href="/authentication">Login/Sign-up</a>
+            </h2>
         </nav>
     )
 }

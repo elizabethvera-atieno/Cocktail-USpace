@@ -1,7 +1,9 @@
 import React from "react";
-// import { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 function Cards({Drinks}){
+
    return (
         <div className="text-center">
             <h3 className="text-2xl  pt-5 text-textcolor font-bold">
@@ -15,14 +17,15 @@ function Cards({Drinks}){
                            <div key={drink.idDrink} className="flex flex-wrap w-1/3">
                            <div className="w-full p-1 md:p-2">
                                <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                                   <img
+                                <Link to={`/display/${drink.idDrink}`}>
+                                    <img
                                        className="rounded-t-lg"
                                        src={drink.strDrinkThumb}
                                        alt=""
                                    />
-
+                                </Link>
                                    <div className="flex justify-between p-1">
-                                       <h5 className="mb-2 text-2xl font-bold tracking-tight text-textcolor dark:text-white">
+                                       <h5 className="mb-2  tracking-tight text-textcolor dark:text-white">
                                            {drink.strDrink}
                                        </h5>
                                         <a

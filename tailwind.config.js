@@ -9,6 +9,11 @@ module.exports = {
         textcolor:"#D90C0C"
       }
     },
+    screens:{
+      sm:"480px",
+      md:"968px",
+      lg:"990px"
+    }
   },
   plugins: [],
 }

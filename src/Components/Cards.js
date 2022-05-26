@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 
 
 function Cards({Drinks}){
+    const [clicked, setClicked] = useState(false)
+
+    console.log(clicked)
 
    return (
         <div className="text-center">
@@ -28,13 +31,13 @@ function Cards({Drinks}){
                                        <h5 className="mb-2  tracking-tight text-textcolor dark:text-white">
                                            {drink.strDrink}
                                        </h5>
-                                        <a
-                                           href="#"
+                                        <button
+                                           onClick={()=>{setClicked((previouslike)=>!previouslike)}}
                                            className="inline-flex items-center py-1 px-3 text-xs font-medium text-center text-white bg-red-500 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                        >
                                            Like
-                                           <svg className="w-5 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                                       </a>
+                                           <svg className="w-5 md:h-6" fill={clicked? "red-800":"none"} stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                       </button>
                                    </div>
                                </div>
                            </div>

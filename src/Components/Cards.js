@@ -12,7 +12,6 @@ function Cards({Drinks}){
             <h3 className="text-2xl  pt-5 text-textcolor font-bold">
                 Some of the popular Cocktails
             </h3>
-            {/* {Drinks.map((drink)=>(<p key={drink.idDrink}>poiiuuii</p>))} */}
             <section className="overflow-hidden text-gray-700 ">
                 <div className="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
                     <div className="flex flex-col md:flex-row place-content-center flex-wrap -m-1 md:-m-2">

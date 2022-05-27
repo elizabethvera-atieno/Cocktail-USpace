@@ -21,9 +21,9 @@ function Home({user}){
 
     console.log(user);
     
-    if (!user){
-        return <Redirect to="/authentication"/>
-    }
+    // if (!user){
+    //     return <Redirect to="/authentication"/>
+    // }
 
     return(
         <div>

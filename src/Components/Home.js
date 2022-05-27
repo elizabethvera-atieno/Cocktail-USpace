@@ -7,10 +7,12 @@ import Feedback from "./Feedback";
 import { useEffect } from "react";
 import { useState } from "react";
 import {Redirect, useHistory} from "react-router-dom"
+import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
+import {auth} from "./firebase-config";
 // import { Route, useRouteMatch } from "react-router-dom";
 
 
-function Home({user}){
+function Home({user, setUser}){
     const [drinkData, setDrinkData]=useState([])
     let history = useHistory()
     useEffect(()=>{
@@ -18,12 +20,18 @@ function Home({user}){
         .then((r)=> r.json())
         .then((data)=>(setDrinkData(data.drinks)))
     },[])
+    useEffect(()=>{
+        onAuthStateChanged(auth,(currentUser) =>{
+          console.log(currentUser)
+          setUser(currentUser)
+        })
+      },[setUser])
 
     console.log(user);
     
-    // if (!user){
-    //     return <Redirect to="/authentication"/>
-    // }
+    if (!user){
+        return <Redirect to="/authentication"/>
+    }
 
     return(
         <div>

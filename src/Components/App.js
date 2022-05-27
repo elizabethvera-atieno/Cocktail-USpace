@@ -18,7 +18,7 @@ function App() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar user={user}/>
         <div className='app'>
         <Switch>
         <Route path={`/display`}>
@@ -28,7 +28,7 @@ function App() {
           <Aunthentication user={user} setUser={setUser}/>
         </Route>
         <Route exact path="/">
-          <Home user={user}/>
+          <Home user={user} setUser={setUser}/>
         </Route>
       </Switch>
         </div>

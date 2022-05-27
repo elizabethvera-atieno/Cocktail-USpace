@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import {auth} from "./firebase-config";
+import {Redirect} from "react-router-dom"
 
 function Aunthentication({user, setUser}) {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -11,6 +12,7 @@ function Aunthentication({user, setUser}) {
 
   useEffect(()=>{
     onAuthStateChanged(auth,(currentUser) =>{
+      console.log(currentUser)
       setUser(currentUser)
     })
   },[setUser])
@@ -38,12 +40,9 @@ function Aunthentication({user, setUser}) {
       }
   }
 
-  const logout = async () => {
-
-    await signOut (auth);
-  };
-
-
+if (user){
+  return <Redirect to="/"/>
+}
   return (
     <>
       <p className="text-white text-center">Current user:</p>
@@ -151,14 +150,7 @@ function Aunthentication({user, setUser}) {
           </form>
         </div>
       </div>
-      <div className="pt-10 place-content-center flex ">
-      <button
-      className=" text-white bg-textcolor hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      onClick={logout}
-      >
-        Sign out
-      </button>
-      </div>
+    
     </>
   );
 }

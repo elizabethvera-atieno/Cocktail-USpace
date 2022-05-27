@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import {auth} from "./firebase-config";
-import {Redirect} from "react-router-dom"
 
 function Aunthentication({user, setUser}) {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -34,7 +33,6 @@ function Aunthentication({user, setUser}) {
       try{
         const user = await signInWithEmailAndPassword(auth,loginEmail, loginPassword)
         console.log(user)
-       {<Redirect to="/"/>}
       } catch (error) {
         console.log(error.message)
       }
@@ -48,7 +46,9 @@ function Aunthentication({user, setUser}) {
 
   return (
     <>
-      <div className="pt-10 place-content-center flex ">
+      <p className="text-white text-center">Current user:</p>
+      <p className="text-white text-center">{user?.email} </p>
+      <div className="pt-10 flex place-content-center justfify-center">
         <div className="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
           <form className="space-y-6" onSubmit={handleRegisterSubmit}>
             <h5 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -150,8 +150,6 @@ function Aunthentication({user, setUser}) {
             </button>
           </form>
         </div>
-        <p className="text-white">Current user:</p>
-        {user?.email} 
       </div>
       <div className="pt-10 place-content-center flex ">
       <button

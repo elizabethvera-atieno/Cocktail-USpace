@@ -2,18 +2,19 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 
-function Display({ }) {
+function Display() {
     const [drinkData, setDrinkData] = useState([])
+
+    const id = Number(window.location.pathname.split("/").pop())
+    console.log(id)
+    console.log(drinkData)
 
     useEffect(() => {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
             .then((r) => r.json())
             .then((data) => (setDrinkData(data.drinks)))
-    }, [])
+    }, [id])
 
-    const id = Number(window.location.pathname.split("/").pop())
-    console.log(id)
-    console.log(drinkData)
 
 
 

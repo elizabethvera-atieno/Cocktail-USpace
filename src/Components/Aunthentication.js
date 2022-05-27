@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import {auth} from "./firebase-config";
+import {Redirect} from "react-router-dom"
 
 function Aunthentication({user, setUser}) {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -13,7 +14,9 @@ function Aunthentication({user, setUser}) {
     onAuthStateChanged(auth,(currentUser) =>{
       setUser(currentUser)
     })
-  },[])
+  },[setUser])
+
+  console.log(user)
 
   const handleRegisterSubmit=async(event)=>{
     event.preventDefault()
@@ -31,6 +34,7 @@ function Aunthentication({user, setUser}) {
       try{
         const user = await signInWithEmailAndPassword(auth,loginEmail, loginPassword)
         console.log(user)
+       {<Redirect to="/"/>}
       } catch (error) {
         console.log(error.message)
       }
@@ -40,6 +44,7 @@ function Aunthentication({user, setUser}) {
 
     await signOut (auth);
   };
+
 
   return (
     <>

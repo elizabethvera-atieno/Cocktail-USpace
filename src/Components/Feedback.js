@@ -15,7 +15,7 @@ function Feedback() {
       <form onSubmit={handleSubmit} className="">
         <div className="mb-6">
           <label
-            for="email"
+            htmlFor="email"
             className="block mb-2 text-sm font-medium text-white dark:text-gray-300"
           >
             Your email

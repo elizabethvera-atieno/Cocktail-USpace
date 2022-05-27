@@ -6,22 +6,21 @@ import Feedback from "./Feedback";
 // import Display from './Dispay';
 import { useEffect } from "react";
 import { useState } from "react";
-import { Route, useRouteMatch } from "react-router-dom";
+import {Redirect} from "react-router-dom"
+// import { Route, useRouteMatch } from "react-router-dom";
 
 
-function Home(){
+function Home({user}){
     const [drinkData, setDrinkData]=useState([])
-
-    const match = useRouteMatch();
-    console.log(match);
-
     useEffect(()=>{
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=m`)
         .then((r)=> r.json())
         .then((data)=>(setDrinkData(data.drinks)))
     },[])
-    // console.log(drinkData)
-
+    
+    if (!user){
+        return <Redirect to="/authentication"/>
+    }
 
     return(
         <div>

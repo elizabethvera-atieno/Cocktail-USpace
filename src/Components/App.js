@@ -7,9 +7,12 @@ import Favorites from './Favorites';
 import Footer from "./Footer";
 import Display from './Dispay';
 import Aunthentication from './Aunthentication';
+import {useState} from "react"
+
 
 
 function App() {
+  const [user, setUser] = useState()
   return (
     <>
       <Navbar/>
@@ -22,10 +25,10 @@ function App() {
           <Display/>
         </Route>
         <Route path="/authentication">
-          <Aunthentication/>
+          <Aunthentication user={user} setUser={setUser}/>
         </Route>
         <Route exact path="/">
-          <Home/>
+          <Home user={user}/>
         </Route>
       </Switch>
         </div>

@@ -1,43 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import {auth} from "./firebase-config";
 
-function Aunthentication() {
+function Aunthentication({user, setUser}) {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [user, setUser] = useState({})
 
-  onAuthStateChanged(auth,(currentUser) =>{
-    setUser(currentUser)
-  })
+  useEffect(()=>{
+    onAuthStateChanged(auth,(currentUser) =>{
+      setUser(currentUser)
+    })
+  },[])
 
-  function handleRegisterSubmit(event){
+  const handleRegisterSubmit=async(event)=>{
     event.preventDefault()
-    async function register(){
       try{
-        const user = await createUserWithEmailAndPassword(auth,loginEmail, loginPassword)
+        const user = await createUserWithEmailAndPassword(auth,registerEmail, registerPassword)
         console.log(user)
       } catch (error) {
         console.log(error.message)
       }
   
-    };
   }
 
-  function handleLoginSubmit(event){
+  const handleLoginSubmit=async(event)=>{
     event.preventDefault()
-    async function login(){
       try{
-        const user = await signInWithEmailAndPassword(auth,registerEmail, registerPassword)
+        const user = await signInWithEmailAndPassword(auth,loginEmail, loginPassword)
         console.log(user)
       } catch (error) {
         console.log(error.message)
       }
-  
-    };
   }
 
   const logout = async () => {
@@ -150,7 +146,7 @@ function Aunthentication() {
           </form>
         </div>
         <p className="text-white">Current user:</p>
-        {/* {user?.email} */}
+        {user?.email} 
       </div>
       <div className="pt-10 place-content-center flex ">
       <button
